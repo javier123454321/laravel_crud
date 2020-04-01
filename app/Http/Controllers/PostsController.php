@@ -1,20 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Response;
 
-class PostsController{
+class PostsController extends Controller{
     
-    public function show($post){
-        $posts = [
-            'first-post' => 'Hello, this is my first post',
-            'second-post' => 'this is my second'
-        ];
-        if(!array_key_exists($post, $posts)){
-            abort(404, 'No post with that title found');
-        };
-
-        return view('posts', [
-            'post' => $posts[$post]
-        ]);
+    public function show($slug){
+    $post = \DB::table('posts_table')->where('slug', $slug)->first();
+    return view('posts', [
+        'post' => $post
+    ]);
     }
 }

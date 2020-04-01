@@ -2,7 +2,7 @@
     @section('content')
     <body>
         <div id="app">
-            <posts-component post="{{ $post }}"></posts-component>
+            <posts-component :post='{!! json_encode($post) !!}'></posts-component>
         </div>
     </body>   
 
