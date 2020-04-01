@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::get('/test', function () {
         'message' => $message
     ]);
 });
+Route::get('/posts', 'PostsController@showAll');
+
+Route::post('/posts', 'PostsController@fetchAll');
 
 Route::get('/posts/{post}', 'PostsController@show');
 
