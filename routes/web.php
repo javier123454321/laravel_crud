@@ -26,7 +26,9 @@ Route::get('/test', function () {
 });
 Route::get('/posts', 'PostsController@showAll');
 
-Route::post('/posts', 'PostsController@fetchAll');
+// Route::post('/api/posts', 'PostsController@fetchAll');
+
+Route::get('/api/latestPost', 'PostsController@getLatestPost');
 
 Route::get('/posts/{post}', 'PostsController@show');
 

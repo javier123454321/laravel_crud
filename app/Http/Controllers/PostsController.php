@@ -24,4 +24,11 @@ class PostsController extends Controller{
         echo(json_encode($all_posts));
         return response()->json(["Hello"=>"world"]);
     }
+    
+    public function getLatestPost(){
+        $latest_post = Post::orderBy('id', 'DESC')->take(2)->get();
+        $response = response()->json($latest_post, 200, []);
+        echo $response;
+        return $response;
+    }
 }

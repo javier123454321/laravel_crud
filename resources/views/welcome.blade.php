@@ -32,7 +32,8 @@
                 Laravel
             </div>
             <div id="app">
-                <example-component></example-component>
+                <latest-post-component></latest-post-component>
+                <a href="/posts">See All</a>
             </div>
         </div>
         </div>

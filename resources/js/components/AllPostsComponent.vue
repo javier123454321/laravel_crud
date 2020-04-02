@@ -22,7 +22,7 @@
                     'Content-Type': 'x-www-form-urlencoded',
                     'X-CSRF-TOKEN': this.csrf
                 });
-                fetch('/posts', {
+                fetch('/api/posts', {
                     method: 'POST',
                     headers,
                 }).then((response)=>{

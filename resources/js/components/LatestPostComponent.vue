@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Latest Post</div>
 
                     <div class="card-body">
                         I'm an example component.
@@ -16,8 +16,32 @@
 
 <script>
     export default {
+        data(){
+            return{
+                post: null,
+            }
+        },
+        methods: {
+            async getLatest(){
+                window.console.log('Component mounted.')
+                fetch('/api/latestPost')
+                .then(response =>{
+                    window.console.log(response)
+                })
+                .then((data) => {
+                    window.console.log(data);
+                    this.post = data;
+                })
+                .catch((response) => {
+                    window.console.log("respnse: "+response)
+                })
+                .finally(()=>{
+                    window.console.log('finally')
+                })
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.getLatest();
         }
     }
 </script>
