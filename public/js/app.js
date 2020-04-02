@@ -1938,12 +1938,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 // import luxon;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      posts: null
-    };
+    return {};
   },
   methods: {
     fetchPosts: function () {
@@ -6686,7 +6689,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.muted[data-v-b66d53e0]{\n    color: rgb(153, 153, 153);\n}\n", ""]);
+exports.push([module.i, "\n.muted[data-v-b66d53e0]{\n    color: rgb(153, 153, 153);\n}\n.card[data-v-b66d53e0]{\n    padding: 40px;\n    margin-bottom: 30px;\n}\n", ""]);
 
 // exports
 
@@ -38996,15 +38999,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "btn btn-primary", on: { click: _vm.fetchPosts } },
-      [_vm._v("fetch Posts")]
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.posts, function(post) {
+        return _c("div", { key: _vm.posts, staticClass: "post card" }, [
+          _c("h3", [
+            _vm._v("\n           " + _vm._s(post.name) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/posts/" + post.slug } }, [
+            _vm._v("Read More...")
+          ])
+        ])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -39091,7 +39105,7 @@ var render = function() {
     _c("h6", { staticClass: "muted" }, [
       _vm._v(
         "\n            Created:\n            " +
-          _vm._s(_vm.post.created_on.substring(0, 9)) +
+          _vm._s(_vm.post.created_at.substring(0, 10)) +
           "\n        "
       )
     ]),

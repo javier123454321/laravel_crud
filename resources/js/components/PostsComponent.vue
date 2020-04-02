@@ -9,7 +9,7 @@
             </h2>
             <h6 class="muted">
                 Created:
-                {{ post.created_on.substring(0, 9) }}
+                {{ post.created_at.substring(0, 10) }}
             </h6>
             <p v-html="post.body" v-bind="post.body">
             </p>
