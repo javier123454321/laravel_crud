@@ -15,7 +15,7 @@ class PostsController extends Controller{
 
     public function showAll(){
 
-        $all_posts = Post::all(['name', 'id', 'created_at', 'slug']);
+        $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
         return view('all_posts', ['posts' => $all_posts]);
     }
 

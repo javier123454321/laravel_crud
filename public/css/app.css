@@ -10882,3 +10882,62 @@ a.text-dark:focus {
   }
 }
 
+html,
+body {
+  color: #636b6f;
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+}
+
+.mainMenuNav > * {
+  padding: 6px;
+  border: solid 1px #636b6f;
+  border-radius: 5px;
+  margin: 5px;
+  min-width: 150px;
+}
+
+.navLink {
+  width: 90px;
+}
+
+a,
+a:active,
+a:visited {
+  color: #636b6f;
+}
+
+.m-b-md {
+  margin-bottom: 30px;
+}
+

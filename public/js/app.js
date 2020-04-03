@@ -2033,8 +2033,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6713,7 +6711,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n    background-color: #fff;\n    color: #636b6f;\n    font-family: 'Nunito', sans-serif;\n    font-weight: 200;\n    height: 100vh;\n    margin: 0;\n}\n.full-height {\n    height: 100vh;\n}\n.flex-center {\n    align-items: center;\n    display: flex;\n    justify-content: center;\n}\n.position-ref {\n    position: relative;\n}\n.top-right {\n    position: absolute;\n    right: 10px;\n    top: 18px;\n}\n.content {\n    text-align: center;\n}\n.title {\n    font-size: 84px;\n}\n.links > a , .links>h5{\n    color: #636b6f;\n    padding: 0 25px;\n    font-size: 13px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n}\n.m-b-md {\n    margin-bottom: 30px;\n}\n.postDisplay{\n    border: solid 1px #636b6f;\n    border-radius: 5px;\n    margin: 0 5px;\n    background-color: #ebebeb;\n}\n.card{\n    margin-bottom: 20px;\n}\na{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.links > a , .links > h5{\n    color: #636b6f;\n    font-size: 13px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n}\n.postDisplay{\n    margin-bottom: 10px;\n}\na{\n    text-decoration: none;\n}\n.card{\n    width:100%;\n    margin-bottom: 10px;\n}\n.card-header{\n    width: 300px;\n}\n\n", ""]);
 
 // exports
 
@@ -39068,15 +39066,20 @@ var render = function() {
           "div",
           { key: _vm.latest, staticClass: "row justify-content-center" },
           [
-            _c("a", { attrs: { href: "/posts/" + post.slug } }, [
-              _c("div", { staticClass: "col-md-8" }, [
-                _c("div", { staticClass: "card postDisplay" }, [
+            _c(
+              "a",
+              {
+                staticClass: "postDisplay",
+                attrs: { href: "/posts/" + post.slug }
+              },
+              [
+                _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header links" }, [
                     _c("h5", [_vm._v(_vm._s(post.name))])
                   ])
                 ])
-              ])
-            ])
+              ]
+            )
           ]
         )
       })
