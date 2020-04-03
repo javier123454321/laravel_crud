@@ -2030,6 +2030,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2068,7 +2073,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.getLatest();
-  }
+  },
+  props: ['latest']
 });
 
 /***/ }),
@@ -2082,7 +2088,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -6708,7 +6713,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n    background-color: #fff;\n    color: #636b6f;\n    font-family: 'Nunito', sans-serif;\n    font-weight: 200;\n    height: 100vh;\n    margin: 0;\n}\n.full-height {\n    height: 100vh;\n}\n.flex-center {\n    align-items: center;\n    display: flex;\n    justify-content: center;\n}\n.position-ref {\n    position: relative;\n}\n.top-right {\n    position: absolute;\n    right: 10px;\n    top: 18px;\n}\n.content {\n    text-align: center;\n}\n.title {\n    font-size: 84px;\n}\n.links > a {\n    color: #636b6f;\n    padding: 0 25px;\n    font-size: 13px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n.m-b-md {\n    margin-bottom: 30px;\n}\n", ""]);
+exports.push([module.i, "\nhtml, body {\n    background-color: #fff;\n    color: #636b6f;\n    font-family: 'Nunito', sans-serif;\n    font-weight: 200;\n    height: 100vh;\n    margin: 0;\n}\n.full-height {\n    height: 100vh;\n}\n.flex-center {\n    align-items: center;\n    display: flex;\n    justify-content: center;\n}\n.position-ref {\n    position: relative;\n}\n.top-right {\n    position: absolute;\n    right: 10px;\n    top: 18px;\n}\n.content {\n    text-align: center;\n}\n.title {\n    font-size: 84px;\n}\n.links > a , .links>h5{\n    color: #636b6f;\n    padding: 0 25px;\n    font-size: 13px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n}\n.m-b-md {\n    margin-bottom: 30px;\n}\n.postDisplay{\n    border: solid 1px #636b6f;\n    border-radius: 5px;\n    margin: 0 5px;\n    background-color: #ebebeb;\n}\n.card{\n    margin-bottom: 20px;\n}\na{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -6727,7 +6732,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.muted[data-v-38048495]{\n    color: rgb(153, 153, 153);\n}\n", ""]);
+exports.push([module.i, "\n.muted[data-v-38048495]{\n    color: rgb(153, 153, 153);\n}\n.postBody[data-v-38048495]{\n    margin: 40px 80px;\n    max-width: 800px;\n}\n", ""]);
 
 // exports
 
@@ -39052,30 +39057,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Latest Post")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h4", [_vm._v("\n        Latest Posts:\n    ")]),
+      _vm._v(" "),
+      _vm._l(_vm.latest, function(post) {
+        return _c(
+          "div",
+          { key: _vm.latest, staticClass: "row justify-content-center" },
+          [
+            _c("a", { attrs: { href: "/posts/" + post.slug } }, [
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("div", { staticClass: "card postDisplay" }, [
+                  _c("div", { staticClass: "card-header links" }, [
+                    _c("h5", [_vm._v(_vm._s(post.name))])
+                  ])
+                ])
+              ])
             ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+          ]
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39098,9 +39107,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("h2", [_vm._v("\n            " + _vm._s(_vm.post.name) + "\n        ")]),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("h2", [
+        _vm._v("\n            " + _vm._s(_vm.post.name) + "\n        ")
+      ])
+    ]),
     _vm._v(" "),
     _c("h6", { staticClass: "muted" }, [
       _vm._v(
@@ -39113,7 +39124,10 @@ var render = function() {
     _c(
       "p",
       _vm._b(
-        { domProps: { innerHTML: _vm._s(_vm.post.body) } },
+        {
+          staticClass: "postBody",
+          domProps: { innerHTML: _vm._s(_vm.post.body) }
+        },
         "p",
         _vm.post.body,
         false
@@ -39121,17 +39135,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("h1", [_vm._v("Posts")]),
-      _c("br")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

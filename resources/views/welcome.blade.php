@@ -32,11 +32,28 @@
                 Laravel
             </div>
             <div id="app">
-                <latest-post-component></latest-post-component>
-                <a href="/posts">See All</a>
+                <latest-post-component :latest='{!! json_encode($latest) !!}'></latest-post-component>
+            </div>
+            <div class="mainMenuNav">
+                <a class="navlink" href="/posts">See All</a>
+                <a class="navlink" href="/addpost">Add New</a>
             </div>
         </div>
         </div>
     </body>
     <script src="../js/app.js"></script>
+    <style>
+        .mainMenuNav > *{
+            padding: 6px;
+            border: solid 1px #636b6f;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .navLink{
+            width: 90px;
+        }
+        a, a:active, a:visited{
+            color: #636b6f;
+        }
+    </style>
 </html>

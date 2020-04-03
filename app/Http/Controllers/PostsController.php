@@ -28,7 +28,6 @@ class PostsController extends Controller{
     public function getLatestPost(){
         $latest_post = Post::orderBy('id', 'DESC')->take(2)->get();
         $response = response()->json($latest_post, 200, []);
-        echo $response;
-        return $response;
+        return view('welcome', ['latest' => $latest_post]);;
     }
 }

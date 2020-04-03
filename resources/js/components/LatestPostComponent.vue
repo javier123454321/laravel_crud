@@ -1,15 +1,20 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Latest Post</div>
-
-                    <div class="card-body">
-                        I'm an example component.
+        <h4>
+            Latest Posts:
+        </h4>
+        <div class="row justify-content-center" v-for="post in latest" :key="latest">
+            
+            <a :href="'/posts/' + post.slug">
+                <div class="col-md-8">
+                    <div  class="card postDisplay">
+                        <div class="card-header links" >
+                            <h5>{{post.name}}</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
+
         </div>
     </div>
 </template>
@@ -42,7 +47,8 @@
         },
         mounted() {
             this.getLatest();
-        }
+        },
+        props: ['latest']
     }
 </script>
        <style>
@@ -83,17 +89,28 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            .links > a , .links>h5{
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
-                text-transform: uppercase;
             }
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+            .postDisplay{
+                border: solid 1px #636b6f;
+                border-radius: 5px;
+                margin: 0 5px;
+                background-color: #ebebeb;
+            }
+            .card{
+                margin-bottom: 20px;
+            }
+            a{
+                text-decoration: none;
             }
         </style>

@@ -1,17 +1,16 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <h1>Posts</h1><br>
-
-        </div>
             <h2>
                 {{ post.name }}
             </h2>
+        </div>
+
             <h6 class="muted">
                 Created:
                 {{ post.created_at.substring(0, 10) }}
             </h6>
-            <p v-html="post.body" v-bind="post.body">
+            <p class="postBody" v-html="post.body" v-bind="post.body">
             </p>
     </div>
 </template>
@@ -31,5 +30,9 @@
 <style scoped>
 .muted{
     color: rgb(153, 153, 153);
+}
+.postBody{
+    margin: 40px 80px;
+    max-width: 800px;
 }
 </style>
