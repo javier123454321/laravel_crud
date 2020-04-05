@@ -2080,6 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39343,6 +39344,10 @@ var render = function() {
         _c("h1", [_vm._v("Edit Article")]),
         _vm._v(" "),
         _c("form", { attrs: { action: "", method: "POST" } }, [
+          _c("input", {
+            attrs: { type: "hidden", name: "_method", value: "PUT" }
+          }),
+          _vm._v(" "),
           _c("input", {
             attrs: { type: "hidden", name: "_token" },
             domProps: { value: _vm.csrf }

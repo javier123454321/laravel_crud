@@ -5,6 +5,7 @@
                 <h1>Edit Article</h1>
 
                 <form action="" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" :value="csrf">
                     <div class="field">
                         <h4>Post Name:</h4>

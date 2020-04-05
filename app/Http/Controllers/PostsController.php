@@ -44,12 +44,21 @@ class PostsController extends Controller{
         $id = "post".($id+1);
         $post->slug=($id);
         $post->save();
-        return redirect('/posts/'.$id);
+        return redirect('/posts'.$id);
     }
 
     public function edit($post){
         $post_info = Post::where('slug', $post)->get();
 
         return view('edit', ['article' => $post_info]);
+    }
+
+    public function update($post){
+        $post_to_edit = Post::where('slug', $post)->first();
+        $post_to_edit->name=request('name');
+        $post_to_edit->body=request('body');
+        $post_to_edit->save();
+        
+        return redirect('/posts/'.$post_to_edit['slug']);
     }
 }
