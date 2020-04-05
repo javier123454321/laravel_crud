@@ -1,4 +1,5 @@
 <template>
+<div class="flex-center position-ref full-height">
     <div class="container">
         <h4>
             Latest Posts:
@@ -15,6 +16,7 @@
 
         </div>
     </div>
+</div>
 </template>
 
 <script>

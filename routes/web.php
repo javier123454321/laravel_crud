@@ -24,11 +24,12 @@ Route::get('/test', function () {
 });
 Route::get('/posts', 'PostsController@showAll');
 
+Route::get('/posts/create', 'PostsController@create');
+
+Route::get('/posts/{post}', 'PostsController@show');
 // Route::post('/api/posts', 'PostsController@fetchAll');
 
 Route::get('/api/latestPost', 'PostsController@getLatestPost');
-
-Route::get('/posts/{post}', 'PostsController@show');
 
 Auth::routes();
 

@@ -15,7 +15,7 @@ class PostsController extends Controller{
 
     public function showAll(){
 
-        $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
+    $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
         return view('all_posts', ['posts' => $all_posts]);
     }
 
@@ -29,5 +29,9 @@ class PostsController extends Controller{
         $latest_post = Post::orderBy('id', 'DESC')->take(2)->get();
         $response = response()->json($latest_post, 200, []);
         return view('welcome', ['latest' => $latest_post]);;
+    }
+
+    public function create(){
+        return view('create');
     }
 }
