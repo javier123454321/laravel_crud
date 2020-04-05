@@ -31,7 +31,23 @@ class PostsController extends Controller{
         return view('welcome', ['latest' => $latest_post]);;
     }
 
-    public function create(){
+    public function returnCreatePage(){
         return view('create');
+    }
+
+    public function store(){
+        $post = new Post();
+        $post->name=request('name');
+        $post->body=request('body');
+
+        $id = Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"];
+        $id = "post".($id+1);
+        $post->slug=($id);
+        $post->save();
+        return redirect('/posts/'.$id);
+    }
+
+    public function edit(){
+        return view('edit');
     }
 }

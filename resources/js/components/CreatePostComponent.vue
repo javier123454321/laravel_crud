@@ -5,6 +5,7 @@
                 <h1>New Article</h1>
 
                 <form action="" method="POST">
+                    <input type="hidden" name="_token" :value="csrf">
                     <div class="field">
                         <h4>Post Name:</h4>
                         <input type="text" name="name" placeholder="Post Name..." id="postName" autocomplete="off">
@@ -23,6 +24,18 @@
             </div>
         </div>
 </template>
+<script>
+    export default {
+        data: function (){
+            return{
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            },
+        mounted(){
+            window.console.log(this.csrf)
+        }
+        }
+</script>
 <style lang="scss">
 .container{
     margin: auto;

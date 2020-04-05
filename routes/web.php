@@ -24,9 +24,13 @@ Route::get('/test', function () {
 });
 Route::get('/posts', 'PostsController@showAll');
 
-Route::get('/posts/create', 'PostsController@create');
+Route::get('/posts/create', 'PostsController@returnCreatePage');
+
+Route::post('/posts/create', 'PostsController@store');
 
 Route::get('/posts/{post}', 'PostsController@show');
+
+Route::get('/posts/{post}/edit', 'PostsController@edit');
 // Route::post('/api/posts', 'PostsController@fetchAll');
 
 Route::get('/api/latestPost', 'PostsController@getLatestPost');
