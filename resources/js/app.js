@@ -24,6 +24,7 @@ Vue.component('test-component', require('./components/TestComponent.vue').defaul
 Vue.component('posts-component', require('./components/PostsComponent.vue').default);
 Vue.component('all-posts-component', require('./components/AllPostsComponent.vue').default);
 Vue.component('create-post-component', require('./components/CreatePostComponent.vue').default);
+Vue.component('edit-post-component', require('./components/EditPostComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

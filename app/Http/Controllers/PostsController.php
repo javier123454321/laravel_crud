@@ -47,7 +47,9 @@ class PostsController extends Controller{
         return redirect('/posts/'.$id);
     }
 
-    public function edit(){
-        return view('edit');
+    public function edit($post){
+        $post_info = Post::where('slug', $post)->get();
+
+        return view('edit', ['article' => $post_info]);
     }
 }
