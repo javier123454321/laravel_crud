@@ -36,19 +36,18 @@ class PostsController extends Controller{
     }
 
     public function store(){
-        request()->validate([
-            'name' => ['required'],
-            'body' => ['required']
-        ]);
-        $post = new Post();
-        $post->name=request('name');
-        $post->body=request('body');
 
-        $id = Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"];
-        $id = "post".($id+1);
-        $post->slug=($id);
-        $post->save();
-        return redirect('/posts'.$id);
+        $validatedInputs = request()->validate([
+            'name' => 'required',
+            'body' => 'required'
+        ]);
+
+        $id = "post".(Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"]+1);
+        $validatedInputs['slug'] = $id;
+        
+        Post::create($validatedInputs);
+
+        return redirect('/posts/'.$id);
     }
 
     public function edit($post){
