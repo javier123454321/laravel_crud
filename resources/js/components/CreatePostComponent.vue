@@ -33,7 +33,7 @@
             },
         mounted(){
             window.console.log(this.csrf)
-        }
+            }
         }
 </script>
 <style lang="scss">

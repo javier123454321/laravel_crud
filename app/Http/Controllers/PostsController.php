@@ -14,8 +14,7 @@ class PostsController extends Controller{
     }
 
     public function showAll(){
-
-    $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
+        $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
         return view('all_posts', ['posts' => $all_posts]);
     }
 
@@ -37,15 +36,11 @@ class PostsController extends Controller{
 
     public function store(){
 
-        $validatedInputs = request()->validate([
-            'name' => 'required',
-            'body' => 'required'
-        ]);
-
+        $this->validateInputs();
         $id = "post".(Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"]+1);
-        $validatedInputs['slug'] = $id;
+        $inputs['slug'] = $id;
         
-        Post::create($validatedInputs);
+        Post::create($inputs);
 
         return redirect('/posts/'.$id);
     }
@@ -57,11 +52,19 @@ class PostsController extends Controller{
     }
 
     public function update($post){
-        $post_to_edit = Post::where('slug', $post)->first();
-        $post_to_edit->name=request('name');
-        $post_to_edit->body=request('body');
-        $post_to_edit->save();
+        $post_info = Post::where('slug', $post)->firstOrFail(); 
+        $inputs = $this->validateInputs();
+        $inputs['slug'] = $post_info->slug;
+        $post_info->update($inputs);
         
-        return redirect('/posts/'.$post_to_edit['slug']);
+        return redirect(route('post.showPost', $post_info->slug));
+    }
+
+    private function validateInputs(){
+        $validatedInputs = request()->validate([
+            'name' => 'required',
+            'body' => 'required'
+        ]);
+        return $validatedInputs;
     }
 }

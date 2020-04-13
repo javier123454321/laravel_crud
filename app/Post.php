@@ -11,6 +11,8 @@ class Post extends Model
     // protected $table = 'posts_table';
 
     //eloquent asks which values to you want to be able to mass assign
+    //or the inverse is which values to guard through the $guarded param
+    // protected $guarded = [];
     protected $fillable = ['name', 'body', 'slug'];//Now we can use the ::create method with these values
     
 }
