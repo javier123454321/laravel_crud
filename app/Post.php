@@ -15,4 +15,7 @@ class Post extends Model
     // protected $guarded = [];
     protected $fillable = ['name', 'body', 'slug'];//Now we can use the ::create method with these values
     
+    public function user(){
+        $this->belongsTo(User::class);
+    }
 }
