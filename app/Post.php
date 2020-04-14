@@ -18,4 +18,8 @@ class Post extends Model
     public function author(){
         return $this->belongsTo(User::class, 'user_id');//Overriding the key column name in the db that the post has 
     }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
 }
