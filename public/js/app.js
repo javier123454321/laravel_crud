@@ -2206,9 +2206,18 @@ __webpack_require__.r(__webpack_exports__);
 // import luxon;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      author: this.getAuthor()
+    };
   },
-  mounted: function mounted() {},
+  methods: {
+    getAuthor: function getAuthor() {
+      return post.user_id;
+    }
+  },
+  mounted: function mounted() {
+    window.console.log(this.props);
+  },
   props: ['post']
 });
 
@@ -39480,7 +39489,7 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("h2", [
-        _vm._v("\n            " + _vm._s(_vm.post.name) + "\n        ")
+        _vm._v("\n            " + _vm._s(_vm.post.name) + " a\n        ")
       ])
     ]),
     _vm._v(" "),
@@ -39488,22 +39497,17 @@ var render = function() {
       _vm._v(
         "\n            Created:\n            " +
           _vm._s(_vm.post.created_at.substring(0, 10)) +
-          "\n        "
-      )
+          " by "
+      ),
+      _c("span", { staticStyle: { "font-weight": "800" } }, [
+        _vm._v(_vm._s(_vm.post.user_id))
+      ])
     ]),
     _vm._v(" "),
-    _c(
-      "p",
-      _vm._b(
-        {
-          staticClass: "postBody",
-          domProps: { innerHTML: _vm._s(_vm.post.body) }
-        },
-        "p",
-        _vm.post.body,
-        false
-      )
-    )
+    _c("p", {
+      staticClass: "postBody",
+      domProps: { innerHTML: _vm._s(_vm.post.body) }
+    })
   ])
 }
 var staticRenderFns = []

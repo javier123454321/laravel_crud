@@ -15,7 +15,7 @@ class Post extends Model
     // protected $guarded = [];
     protected $fillable = ['name', 'body', 'slug'];//Now we can use the ::create method with these values
     
-    public function user(){
-        $this->belongsTo(User::class);
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id');//Overriding the key column name in the db that the post has 
     }
 }
