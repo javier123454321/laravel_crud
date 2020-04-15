@@ -2,7 +2,7 @@
     @section('content')
     <body>
         @csrf
-        <create-post-component></create-post-component>
+        <create-post-component :tags='{!! json_encode($tags) !!}'></create-post-component>
         @if($errors -> has('name'))
         <div class="help is-danger">
             {{ $errors->first('name') }}

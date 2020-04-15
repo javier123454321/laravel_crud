@@ -16,6 +16,12 @@
                         <textarea name="body" placeholder="Post body..."  id="postBody">
                         </textarea>
                     </div>
+                    <div class="tags">
+                        <div v-for="tag in tags" :key="tags" >
+                             <input type="checkbox" id="postTags" :value="tag.id">
+                             <label :for="tag.id">{{ tag.tagname }}</label>
+                        </div>
+                    </div>
                     <div class="field">
                         <input type="submit" class="btn btn-secondary">
                     </div>
@@ -32,8 +38,9 @@
                 }
             },
         mounted(){
-            window.console.log(this.csrf)
-            }
+            window.console.log(this.tags[0])
+            },
+        props: ["tags"]
         }
 </script>
 <style lang="scss">
@@ -57,5 +64,8 @@
     input, textarea{
         width: 100%;
     }
+}
+.tags{
+    text-align: left;
 }
 </style>

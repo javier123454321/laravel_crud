@@ -2037,6 +2037,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2044,8 +2050,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    window.console.log(this.csrf);
-  }
+    window.console.log(this.tags[0]);
+  },
+  props: ["tags"]
 });
 
 /***/ }),
@@ -6812,7 +6819,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container {\n  margin: auto;\n}\n.container .content {\n  margin: auto;\n  min-width: 450px;\n  width: 80%;\n}\n.container .content form {\n  min-width: 350px;\n}\n.field {\n  width: 300px;\n  margin-bottom: 25px;\n}\n.field h4 {\n  text-align: left;\n}\n.field input, .field textarea {\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".container {\n  margin: auto;\n}\n.container .content {\n  margin: auto;\n  min-width: 450px;\n  width: 80%;\n}\n.container .content form {\n  min-width: 350px;\n}\n.field {\n  width: 300px;\n  margin-bottom: 25px;\n}\n.field h4 {\n  text-align: left;\n}\n.field input, .field textarea {\n  width: 100%;\n}\n.tags {\n  text-align: left;\n}", ""]);
 
 // exports
 
@@ -39292,6 +39299,24 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tags" },
+            _vm._l(_vm.tags, function(tag) {
+              return _c("div", { key: _vm.tags }, [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "postTags" },
+                  domProps: { value: tag.id }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: tag.id } }, [
+                  _vm._v(_vm._s(tag.tagname))
+                ])
+              ])
+            }),
+            0
+          ),
           _vm._v(" "),
           _vm._m(2)
         ])

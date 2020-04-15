@@ -46,7 +46,11 @@ class PostsController extends Controller{
     }
 
     public function returnCreatePage(){
-        return view('create');
+        $tags = DB::table('tags')->get();
+        
+        return view('create', [
+            'tags' => $tags
+        ]);
     }
 
     public function store(){
@@ -54,7 +58,9 @@ class PostsController extends Controller{
         $this->validateInputs();
         $id = "post".(Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"]+1);
         $inputs['slug'] = $id;
-        
+        $inputs['user_id'] = 6;
+        dd($_POST);
+
         Post::create($inputs);
 
         return redirect('/posts/'.$id);
