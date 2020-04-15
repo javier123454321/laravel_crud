@@ -7,9 +7,10 @@ class PostsController extends Controller{
     
     public function show($slug){
     // $post = \DB::table('posts_table')->where('slug', $slug)->first();
-
+        $post = Post::where('slug', $slug)->firstOrFail();
         return view('posts', [
-            'post' => Post::where('slug', $slug)->firstOrFail()
+            'post' => $post,
+            'tags' => $post->tags->pluck('tagname')
         ]);
     }
 

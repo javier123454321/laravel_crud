@@ -12,6 +12,14 @@
             </h6>
             <p class="postBody" v-html="post.body">
             </p>
+            <div class="tag-container">
+                <div class="tag-box"
+                    v-for="tag in tags" :key="tags">
+                    <a :href="'/posts?search=' + tag">
+                        {{tag}}
+                    </a>
+                </div>
+            </div>
     </div>
 </template>
 
@@ -25,21 +33,30 @@
             },
         methods: {
             getAuthor(){
-                return post.user_id;
+                return this.post.user_id;
             }
         },
         mounted() {
-            window.console.log(this.props)
         },
-        props: ['post'],
+        props: ['post', 'tags'],
     }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .muted{
     color: rgb(153, 153, 153);
 }
 .postBody{
     margin: 40px 80px;
     max-width: 800px;
+}
+.tag-container{
+  display: flex;
+  flex-direction: row;
+  .tag-box{
+      padding: 5px 10px;
+      margin-right: 5px;
+      background-color: rgba(0, 0, 0, .1);
+      border-radius: 2px;
+  }
 }
 </style>
