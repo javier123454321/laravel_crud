@@ -38,6 +38,7 @@
         props: ['article']
         }
 </script>
+
 <style lang="scss">
 .container{
     margin: auto;

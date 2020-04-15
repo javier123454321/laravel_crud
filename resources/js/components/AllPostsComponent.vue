@@ -3,13 +3,17 @@
         <div class="row justify-content-center">
             <h1>All Posts</h1><br>
         </div>
-       <div class="post card" v-for="post in posts" :key="posts">
-            <h3>
-               {{ post.name }}
-            </h3>
-            <a v-bind:href="'/posts/' + post.slug">Read More...</a>
+        <div  v-if="posts.length != 0" >
+            <div class="post card" v-for="post in posts" :key="posts">
+                    <h3>
+                    {{ post.name }}
+                    </h3>
+                    <a v-bind:href="'/posts/' + post.slug">Read More...</a>
+            </div>
        </div>
-            <!-- <button class="btn btn-primary" @click="fetchPosts">fetch Posts</button> -->
+        <div v-else>
+            <h3>No Posts </h3>
+        </div>
     </div>
 </template>
 
@@ -42,7 +46,7 @@
             }
         },
         mounted() {
-            // this.fetchPosts();
+            console.log(this.posts.length)
         },
         props: ['csrf', 'posts'],
     }

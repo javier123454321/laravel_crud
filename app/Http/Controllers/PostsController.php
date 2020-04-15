@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use DB;
 
 class PostsController extends Controller{
     
@@ -16,6 +17,19 @@ class PostsController extends Controller{
 
     public function showAll(){
         $all_posts = Post::orderBy('id', 'DESC')->get(['name', 'id', 'created_at', 'slug']);
+        if(request('tag')){
+            // $filtered_posts = Tag::where('tagname', request('tag'))->get()->pluck('post_id');
+            // SELECT posts.id FROM posts
+            // JOIN post_tag AS p_id ON p_id.post_id = posts.id
+            // JOIN tags ON p_id.tag_id  = tags.id
+            // WHERE tags.tagname = 'alias'
+            $filtered_posts = DB::table('posts')
+                                ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+                                ->join('tags', 'post_tag.tag_id', '=', 'tags.id')
+                                ->where('tags.tagname', '=', request('tag'))
+                                ->get(['posts.name', 'posts.id', 'posts.created_at', 'posts.slug']);
+            return view('all_posts', ['posts' => $filtered_posts]);
+        }
         return view('all_posts', ['posts' => $all_posts]);
     }
 

@@ -15,7 +15,7 @@
             <div class="tag-container">
                 <div class="tag-box"
                     v-for="tag in tags" :key="tags">
-                    <a :href="'/posts?search=' + tag">
+                    <a :href="'/posts?tag=' + tag">
                         {{tag}}
                     </a>
                 </div>

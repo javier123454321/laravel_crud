@@ -1943,6 +1943,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 // import luxon;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1990,7 +1994,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchPosts;
     }()
   },
-  mounted: function mounted() {// this.fetchPosts();
+  mounted: function mounted() {
+    console.log(this.posts.length);
   },
   props: ['csrf', 'posts']
 });
@@ -39215,26 +39220,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._l(_vm.posts, function(post) {
-        return _c("div", { key: _vm.posts, staticClass: "post card" }, [
-          _c("h3", [
-            _vm._v("\n           " + _vm._s(post.name) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "/posts/" + post.slug } }, [
-            _vm._v("Read More...")
-          ])
-        ])
-      })
-    ],
-    2
-  )
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.posts.length != 0
+      ? _c(
+          "div",
+          _vm._l(_vm.posts, function(post) {
+            return _c("div", { key: _vm.posts, staticClass: "post card" }, [
+              _c("h3", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(post.name) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "/posts/" + post.slug } }, [
+                _vm._v("Read More...")
+              ])
+            ])
+          }),
+          0
+        )
+      : _c("div", [_c("h3", [_vm._v("No Posts ")])])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -39520,7 +39530,7 @@ var render = function() {
       { staticClass: "tag-container" },
       _vm._l(_vm.tags, function(tag) {
         return _c("div", { key: _vm.tags, staticClass: "tag-box" }, [
-          _c("a", { attrs: { href: "/posts?search=" + tag } }, [
+          _c("a", { attrs: { href: "/posts?tag=" + tag } }, [
             _vm._v(
               "\n                    " + _vm._s(tag) + "\n                "
             )
