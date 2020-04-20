@@ -18,6 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->get('/author', function (Request $request) {
-    return App\User::find(App\Post::find(1)->user_id);
+Route::get('/authors', function (Request $request) {
+    return json_encode(App\User::get());
 });
+
+Route::get('/posts', function (Request $request) {
+    return json_encode(App\Post::take(10)->get());
+});
+
