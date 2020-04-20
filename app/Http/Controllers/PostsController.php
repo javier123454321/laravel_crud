@@ -6,7 +6,7 @@ use App\User;
 use DB;
 
 class PostsController extends Controller{
-    
+
     public function show($slug){
     // $post = \DB::table('posts_table')->where('slug', $slug)->first();
         $post = Post::where('slug', $slug)->firstOrFail();
@@ -62,7 +62,7 @@ class PostsController extends Controller{
         $id = "post".(Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"]+1);
         
         $newPost->slug = $id;
-        $newPost->user_id = 1;
+        $newPost->user_id = auth()->user()->id;
         $newPost->save();
         
         $newPost->tags()->attach(request('tagslist'));
@@ -70,8 +70,13 @@ class PostsController extends Controller{
         return redirect('/posts/'.$id);
     }
 
-    public function edit($post){
-        $post_info = Post::where('slug', $post)->get();
+    public function edit($slug){
+        $post = Post::where('slug', $slug)->get();
+        if(auth()->user()->id != Post::where('slug', $slug)->first()->user_id){
+            return redirect('/posts/'.$slug);
+        };
+        $post_info = Post::where('slug', $slug)->get();
+        $post_info->user_id = auth()->user()->id;
 
         return view('edit', ['article' => $post_info]);
     }

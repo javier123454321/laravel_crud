@@ -23,16 +23,16 @@ Route::get('/test', function () {
     ]);
 });
 Route::get('/posts', 'PostsController@showAll');
-Route::get('/posts/create', 'PostsController@returnCreatePage');
-Route::post('/posts/create', 'PostsController@store');
+Route::get('/posts/create', 'PostsController@returnCreatePage')
+->middleware('auth');
+Route::post('/posts/create', 'PostsController@store')
+->middleware('auth');
 Route::get('/posts/{post}', 'PostsController@show')->name('post.showPost');//name for this specific route;;
-Route::put('/posts/{post}/edit', 'PostsController@update');
-Route::get('/posts/{post}/edit', 'PostsController@edit');
+Route::put('/posts/{post}/edit', 'PostsController@update')
+->middleware('auth');
+Route::get('/posts/{post}/edit', 'PostsController@edit')
+->middleware('auth');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')
+    ->name('home')
+    ->middleware('auth');
