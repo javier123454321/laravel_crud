@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->get('/api/posts', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/author', function (Request $request) {
+    return App\User::find(App\Post::find(1)->user_id);
 });

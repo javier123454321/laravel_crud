@@ -8,7 +8,7 @@
 
             <h6 class="muted">
                 Created:
-                {{ post.created_at.substring(0, 10) }} by <span style="font-weight: 800;">{{ post.user_id }}</span>
+                {{ post.created_at.substring(0, 10) }} by <span style="font-weight: 800;">{{ author.name }}</span>
             </h6>
             <p class="postBody" v-html="post.body">
             </p>
@@ -28,7 +28,7 @@
     export default {
         data: function (){
             return{
-                author: this.getAuthor()
+                // author: this.getAuthor()
                 }
             },
         methods: {
@@ -38,7 +38,7 @@
         },
         mounted() {
         },
-        props: ['post', 'tags'],
+        props: ['post', 'tags', 'author'],
     }
 </script>
 <style scoped lang="scss">

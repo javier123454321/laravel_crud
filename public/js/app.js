@@ -2043,15 +2043,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
-  mounted: function mounted() {
-    window.console.log(this.tags[0]);
-  },
+  mounted: function mounted() {},
   props: ["tags"]
 });
 
@@ -2226,8 +2228,7 @@ __webpack_require__.r(__webpack_exports__);
 // import luxon;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      author: this.getAuthor()
+    return {// author: this.getAuthor()
     };
   },
   methods: {
@@ -2236,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {},
-  props: ['post', 'tags']
+  props: ['post', 'tags', 'author']
 });
 
 /***/ }),
@@ -6819,7 +6820,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container {\n  margin: auto;\n}\n.container .content {\n  margin: auto;\n  min-width: 450px;\n  width: 80%;\n}\n.container .content form {\n  min-width: 350px;\n}\n.field {\n  width: 300px;\n  margin-bottom: 25px;\n}\n.field h4 {\n  text-align: left;\n}\n.field input, .field textarea {\n  width: 100%;\n}\n.tags {\n  text-align: left;\n}", ""]);
+exports.push([module.i, ".container {\n  margin: auto;\n}\n.container .content {\n  margin: auto;\n  min-width: 450px;\n  width: 80%;\n}\n.container .content form {\n  min-width: 350px;\n}\n.field {\n  width: 300px;\n  margin-bottom: 25px;\n}\n.field h4 {\n  text-align: left;\n}\n.field input, .field textarea {\n  width: 100%;\n}\n.tags {\n  text-align: left;\n  margin-bottom: 20px;\n}", ""]);
 
 // exports
 
@@ -6876,7 +6877,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.muted[data-v-b66d53e0]{\n    color: rgb(153, 153, 153);\n}\n.card[data-v-b66d53e0]{\n    padding: 40px;\n    margin-bottom: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.muted[data-v-b66d53e0]{\r\n    color: rgb(153, 153, 153);\n}\n.card[data-v-b66d53e0]{\r\n    padding: 40px;\r\n    margin-bottom: 30px;\n}\r\n", ""]);
 
 // exports
 
@@ -39300,23 +39301,30 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "tags" },
-            _vm._l(_vm.tags, function(tag) {
-              return _c("div", { key: _vm.tags }, [
-                _c("input", {
-                  attrs: { type: "checkbox", id: "postTags" },
-                  domProps: { value: tag.id }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: tag.id } }, [
-                  _vm._v(_vm._s(tag.tagname))
-                ])
-              ])
-            }),
-            0
-          ),
+          _c("div", { staticClass: "tags" }, [
+            _c("h4", [_vm._v("Topic Tags")]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Select Multiple:")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { attrs: { name: "tagslist[]", multiple: "" } },
+              _vm._l(_vm.tags, function(tag) {
+                return _c(
+                  "option",
+                  { key: _vm.tags, domProps: { value: tag.id } },
+                  [
+                    _vm._v(
+                      "\n                       " +
+                        _vm._s(tag.tagname) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ]),
           _vm._v(" "),
           _vm._m(2)
         ])
@@ -39476,7 +39484,7 @@ var render = function() {
       "div",
       { staticClass: "container" },
       [
-        _c("h4", [_vm._v("\n            Latest Posts:\n        ")]),
+        _c("h4", [_vm._v("\r\n            Latest Posts:\r\n        ")]),
         _vm._v(" "),
         _vm._l(_vm.latest, function(post) {
           return _c(
@@ -39541,7 +39549,7 @@ var render = function() {
           " by "
       ),
       _c("span", { staticStyle: { "font-weight": "800" } }, [
-        _vm._v(_vm._s(_vm.post.user_id))
+        _vm._v(_vm._s(_vm.author.name))
       ])
     ]),
     _vm._v(" "),
@@ -52382,8 +52390,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Hal/learningcode/laravel_from_scratch/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Hal/learningcode/laravel_from_scratch/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jgonzalez\personal\laravel_crud\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jgonzalez\personal\laravel_crud\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -29,8 +29,6 @@ Route::get('/posts/{post}', 'PostsController@show')->name('post.showPost');//nam
 Route::put('/posts/{post}/edit', 'PostsController@update');
 Route::get('/posts/{post}/edit', 'PostsController@edit');
 
-Route::get('/api/latestPost', 'PostsController@getLatestPost');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

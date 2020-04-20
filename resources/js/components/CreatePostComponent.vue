@@ -17,11 +17,15 @@
                         </textarea>
                     </div>
                     <div class="tags">
-                        <div v-for="tag in tags" :key="tags" >
-                             <input type="checkbox" id="postTags" :value="tag.id">
-                             <label :for="tag.id">{{ tag.tagname }}</label>
-                        </div>
+                        <h4>Topic Tags</h4>
+                        <p>Select Multiple:</p>
+                        <select name="tagslist[]" multiple>
+                            <option v-for="tag in tags" :key="tags" :value="tag.id">
+                               {{ tag.tagname }}
+                            </option>
+                        </select>
                     </div>
+
                     <div class="field">
                         <input type="submit" class="btn btn-secondary">
                     </div>
@@ -38,7 +42,6 @@
                 }
             },
         mounted(){
-            window.console.log(this.tags[0])
             },
         props: ["tags"]
         }
@@ -67,5 +70,6 @@
 }
 .tags{
     text-align: left;
+    margin-bottom: 20px;
 }
 </style>

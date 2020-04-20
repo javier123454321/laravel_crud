@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\User;
 use DB;
 
 class PostsController extends Controller{
@@ -9,9 +10,11 @@ class PostsController extends Controller{
     public function show($slug){
     // $post = \DB::table('posts_table')->where('slug', $slug)->first();
         $post = Post::where('slug', $slug)->firstOrFail();
+        $author = User::find($post->user_id);
         return view('posts', [
             'post' => $post,
-            'tags' => $post->tags->pluck('tagname')
+            'tags' => $post->tags->pluck('tagname'),
+            'author' => $author
         ]);
     }
 
@@ -54,14 +57,15 @@ class PostsController extends Controller{
     }
 
     public function store(){
+        $newPost = new Post($this->validateInputs());
 
-        $this->validateInputs();
         $id = "post".(Post::orderBy('id', 'DESC')->take(1)->get('id')[0]["id"]+1);
-        $inputs['slug'] = $id;
-        $inputs['user_id'] = 6;
-        dd($_POST);
-
-        Post::create($inputs);
+        
+        $newPost->slug = $id;
+        $newPost->user_id = 1;
+        $newPost->save();
+        
+        $newPost->tags()->attach(request('tagslist'));
 
         return redirect('/posts/'.$id);
     }
@@ -84,7 +88,8 @@ class PostsController extends Controller{
     private function validateInputs(){
         $validatedInputs = request()->validate([
             'name' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tagslist'=> 'exists:tags, "id"'
         ]);
         return $validatedInputs;
     }
